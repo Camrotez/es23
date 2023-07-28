@@ -3,19 +3,21 @@ import { useState } from "react"
 function TodoList({names}){
     const lista = names.map((name, index) => <li key={name + index}>{name}</li>)
     const [user,setUser] = useState("")
+    const [items,setItems] = useState(lista)
     const users = ((e)=>{
         const value =e.target.value
         setUser(value)
     })
-    const pusher = ()=>{
-        const change= names.push(name => <li>{name}</li>)
-    }
-
+    const itemsChange = ((e)=>{
+        e.preventDefault()
+        setItems([items,<li key={name}>{user}</li>])
+        setUser("")
+    })
     return(
         <form>
-            <ul>HERE WE HAVE A LIST: {lista}</ul>
-            <input type="text" name="User" onChange={users}/>
-            <button onClick={pusher} type="submit">Push</button>
+            <ul>HERE WE HAVE A LIST: {items}</ul>
+            <input type="text" name="User" value={user} onChange={users}/>
+            <button onClick={itemsChange} type="submit">Push</button>
         </form>
     )
 }
