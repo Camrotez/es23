@@ -22,3 +22,6 @@ function TodoList({names}){
     )
 }
 export default TodoList
+
+
+// fatto per esercizio 23 e 24
